@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Activities;
+using System.ComponentModel;
+namespace SecondsToHours
+{
+    public class SecondsToHours : CodeActivity
+    {
+        [Category("Input")]
+        public InArgument<double> Seconds1 { get; set; }
+
+        [Category("Output")]
+        public OutArgument<String> ResultNumber { get; set; }
+
+        protected override void Execute(CodeActivityContext context)
+        {
+            var Secnds = Seconds1.Get(context);
+            var result = TimeSpan.FromSeconds(Secnds);
+            ResultNumber.Set(context, result.ToString());
+        }
+    }
+}
